@@ -2,6 +2,7 @@ const express = require('express')
 require('dotenv').config();
 const youtubeRoute = require("./routes/YoytubeRoute");
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 
@@ -17,6 +18,13 @@ app.use(bodyParser.json());
 app.use('/', youtubeRoute);
 
 const PORT = process.env.PORT || 5000;
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, "/client/build/")));
+    app.get('*', (req,res)=>{
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+  }
 
 const server = app.listen(PORT, ()=>{
     console.log('Your app is running on port 5000');
