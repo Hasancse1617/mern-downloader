@@ -19,13 +19,32 @@ function Home() {
         e.preventDefault();
         dispatch(YoutubeVideo({url}));
     }
-    const download = (url) =>{
+    const downloadImage = (url) =>{
         // dispatch(DownloadVideo({url}));
         // console.log(url)
         // saveAs('https://cors-anywhere.herokuapp.com/'+url, 'Hasan.mp4');
         // axios.get(url, { headers:{'Cache-Control':'no-cache','Accept-Language':'en','Content-Type':'application/json','Access-Control-Allow-Origin':'*'}, responseType:'blob'}).then(function(response){
         //     console.log(response);
         // })
+        // var xhr = new XMLHttpRequest();
+        //     xhr.open('GET', 'https://via.placeholder.com/150/allow-cors', true);
+        //     xhr.responseType = 'blob';
+        //     xhr.withCredentials = true;
+        //     xhr.onload = function() {
+        //       var urlCreator = window.URL || window.webkitURL;
+        //       var imageUrl = urlCreator.createObjectURL(this.response);
+        //       var tag = document.createElement('a');
+        //       tag.href = imageUrl;
+        //       tag.target = '_blank';
+        //       tag.download = 'sample.png';
+        //       document.body.appendChild(tag);
+        //       tag.click();
+        //       document.body.removeChild(tag);
+        //     };
+        //     xhr.onerror = err => {
+        //       alert('Failed to download picture');
+        //     };
+        //     xhr.send();
     }
   return (
     <>
@@ -82,7 +101,8 @@ function Home() {
                                                     <tr key={index}>
                                                         <td>(.mp4) {video.qualityLabel}</td>
                                                         <td>7.2 MB</td>
-                                                        <td><button><a title={basic.title} href={`${video.url}`}  style={{textDecoration: 'none'}} download="video.mp4"><i class="fa-solid fa-download"></i>Download</a></button></td>
+                                                        {/* <td><button><a title={basic.title} href={`${video.url}`}  style={{textDecoration: 'none'}} download="video.mp4"><i class="fa-solid fa-download"></i>Download</a></button></td> */}
+                                                        <td><button><a href={`${video.url}&title=Y2Mate.is`} title={basic.title} target="_blank"   style={{textDecoration: 'none'}}><i class="fa-solid fa-download"></i>Download</a></button></td>
                                                     </tr>
                                                 ))
                                             }
